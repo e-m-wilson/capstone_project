@@ -1,0 +1,415 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+:root {
+  --cardColor: #7A7879;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  line-height: 1.5;
+  background-color: #e4e4e4;
+}
+
+h2 {
+  text-align: center;
+  grid-column: 1 / 4;
+  grid-row: 4 / 5;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+header {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  max-height: 80px;
+  margin: 15px;
+  color: black;
+  font-size: 0.7rem;
+  text-align: center;
+}
+
+header > h1 {
+  margin: auto;
+}
+
+header > a > img {
+  max-width: 60px;
+  max-height: 60px;
+}
+
+#results {
+  display: grid;
+  justify-content: space-around;
+  align-content: space-around;
+  grid-template-columns: auto auto auto;
+  grid-template-rows: auto auto auto auto auto;
+}
+
+#actorBanner, #titleBanner, #actorBannerNoImage, #titleBannerNoImage {
+  grid-row: 1 / 3;
+  grid-column: 1 / 2;
+}
+
+#birthday {
+  grid-column: 2 / 4;
+  grid-row: 1 / 2;
+}
+
+#deathday {
+  grid-column: 2 / 4;
+  grid-row: 2 / 3;
+}
+
+#bio, #runtime {
+  grid-column: 1 / 4;
+  grid-row: 3 / 4;
+}
+
+#overview {
+  grid-column: 2 / 4;
+  grid-row: 1 / 3;
+}
+
+#results > div {
+  text-align: center;
+  background: var(--cardColor);
+  color: white;
+  border-radius: 1em;
+  margin: 15px;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-shadow: 5px 5px 15px black;
+}
+
+#allMoviesList {
+  display: grid;
+  grid-gap: 15px;
+  text-align: center;
+  grid-template-columns: auto auto auto auto;
+}
+
+#allMoviesList > div {
+  box-shadow: 5px 5px 15px black;
+}
+
+#allActorsList {
+  display: grid;
+  grid-gap: 15px;
+  text-align: center;
+  grid-template-columns: auto auto auto auto;
+}
+
+#allActorsList > div {
+  box-shadow: 5px 5px 15px black;
+}
+
+#castList {
+  list-style-type: none;
+  display: grid;
+  text-align: center;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-column: 1 / 4;
+  grid-row: 5 / 6;
+}
+
+#credits_list {
+  list-style-type: none;
+  display: grid;
+  text-align: center;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-column: 1 / 4;
+  grid-row: 5 / 6;
+}
+
+#credits_list > li {
+  box-shadow: 5px 5px 15px black;
+}
+
+#actorBanner > a > img {
+  max-width: 100%;
+}
+
+#titleBanner > a > img {
+  max-width: 100%;
+}
+
+#aboutSection, #aboutList {
+  text-align: center;
+  background: var(--cardColor);
+  color: white;
+  border-radius: 1em;
+  margin: 15px;
+  padding: 35px;
+  box-shadow: 5px 5px 15px black;
+  line-height: 2.5rem;
+}
+
+#attribution {
+  
+}
+
+#attribution > a > img {
+  max-width: 20%;
+}
+
+.castMember {
+  color: white;
+  border-radius: 1em;
+  background: var(--cardColor);
+  padding: 15px;
+  margin: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
+  box-shadow: 5px 5px 15px black;
+}
+
+.castMember > a > img {
+  max-width: 100%;
+  border-radius: 0.5em;
+}
+
+.resultBanner {
+  display: flex;
+  flex-direction: column;
+  background: var(--cardColor);
+  color: white;
+  border-radius: 1em;
+  margin: 15px;
+  padding: 15px;
+  text-align: center;
+}
+
+.resultBanner > a > img{
+  max-width: 100%;
+  border-radius: 0.5em;
+}
+
+.resultNoImage {
+  background: var(--cardColor);
+  color: white;
+  border-radius: 1em;
+  margin: 15px;
+  padding: 15px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.resultNoImage > a {
+  color: white;
+  text-decoration: none;
+}
+
+.menu-wrap {
+  position: fixed;
+  top: 15px;
+  right: 100px;
+  z-index: 1;
+}
+
+.menu-wrap .toggler{
+  position: absolute;
+  cursor: pointer;
+  width: 50px;
+  height: 50px;
+  z-index: 2;
+  opacity: 0;
+}
+
+.menu-wrap .hamburger {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  padding: 1rem;
+  display: flex;
+  background: var(--cardColor);
+  border-radius: 1em;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.menu-wrap .hamburger > div {
+  position: relative;
+  flex: none;
+  width: 100%;
+  height: 2px;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.4s ease;
+}
+
+.menu-wrap .hamburger > div::before,
+.menu-wrap .hamburger > div::after {
+  content: '';
+  position: absolute;
+  z-index: 1;
+  top: -10px;
+  width: 100%;
+  height: 2px;
+  background: inherit;
+}
+
+.menu-wrap .hamburger > div::after {
+  top: 10px;
+}
+
+.menu-wrap .toggler:checked + .hamburger > div {
+  transform: rotate(135deg);
+}
+
+.menu-wrap .toggler:checked + .hamburger > div:before,
+.menu-wrap .toggler:checked + .hamburger > div:after {
+  top: 0;
+  transform: rotate(90deg);
+}
+
+.menu-wrap .toggler:checked:hover + .hamburger > div {
+  transform: rotate(225deg);
+}
+
+.menu-wrap .toggler:checked ~ .menu {
+  visibility: visible;
+}
+
+.menu-wrap .toggler:checked ~ .menu > div {
+  transform: scale(1);
+  transition-duration: 0.75s;
+}
+
+.menu-wrap .toggler:checked ~ .menu > div > div {
+  opacity: 1;
+  transition: opacity 0.4s ease 0.4s;
+}
+
+.menu-wrap .menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  visibility: hidden;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.menu-wrap .menu > div {
+  background: var(--cardColor);
+  border-radius: 50%;
+  width: 300vw;
+  height: 300vw;
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  transform: scale(0);
+  transition: all 0.4s ease;
+}
+
+.menu-wrap .menu > div > div {
+  text-align: center;
+  max-width: 90vw;
+  max-height: 100vh;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.menu-wrap .menu > div > div > ul > li {
+  list-style: none;
+  color: white;
+  font-size: 1.5rem;
+  padding: 1rem;
+}
+
+.menu-wrap .menu > div > div > ul > li > a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.4s ease;
+}
+
+
+
+@media all and (max-width: 768px) {
+  header > h1 {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    border: 0;
+  }
+
+  #allMoviesList {
+    grid-template-columns: auto auto;
+  }
+
+  #allActorsList {
+    grid-template-columns: auto auto;
+  }
+
+  #castList {
+    grid-template-columns: auto auto;
+  }
+
+  #credits_list {
+    grid-template-columns: auto auto;
+  }
+
+  #results {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+}
+
+@media all and (max-width: 400px) {
+  #allMoviesList {
+    grid-template-columns: auto;
+  }
+
+  #allActorsList {
+    grid-template-columns: auto;
+  }
+
+  #castList {
+    grid-template-columns: auto;
+  }
+
+  #credits_list {
+    grid-template-columns: auto;
+  }
+
+  #results {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+  }
+}
