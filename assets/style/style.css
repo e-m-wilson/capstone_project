@@ -14,6 +14,8 @@ body {
   font-family: 'Poppins', sans-serif;
   line-height: 1.5;
   background-color: #e4e4e4;
+  max-width: 80%;
+  margin: auto;
 }
 
 h2 {
@@ -140,11 +142,11 @@ header > a > img {
 }
 
 #actorBanner > a > img {
-  max-width: 100%;
+  max-width: 60%;
 }
 
 #titleBanner > a > img {
-  max-width: 100%;
+  max-width: 60%;
 }
 
 #aboutSection, #aboutList {
@@ -156,10 +158,6 @@ header > a > img {
   padding: 35px;
   box-shadow: 5px 5px 15px black;
   line-height: 2.5rem;
-}
-
-#attribution {
-  
 }
 
 #attribution > a > img {
@@ -181,7 +179,7 @@ header > a > img {
 }
 
 .castMember > a > img {
-  max-width: 100%;
+  max-width: 60%;
   border-radius: 0.5em;
 }
 
@@ -197,7 +195,7 @@ header > a > img {
 }
 
 .resultBanner > a > img{
-  max-width: 100%;
+  max-width: 60%;
   border-radius: 0.5em;
 }
 
