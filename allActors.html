@@ -6,7 +6,7 @@
     <meta name="description" content="Database of Arkansas Cinema">
     <meta name="author" content="Ethan Wilson">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/style/style.css">
+    <link rel="stylesheet" href="assets/styles/css/style.css">
     <script src="assets/scripts/allActors.js" defer></script>
     <title>Arkansas Movie Database</title>
   </head>
@@ -15,23 +15,20 @@
     <header>
       <a href="index.html"><img src="assets/images/logo.svg" alt="logo"></a>
       <h1>Arkansas Movie Database</h1>
-      <div class="menu-wrap">
-        <input type="checkbox" class="toggler">
-        <div class="hamburger"><div></div></div>
-        <div class="menu">
-          <div>
-            <div>
-              <ul>
-                <li><a href="index.html">All Movies</a></li>
-                <li><a href="allActors.html">All Actors/Directors</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="https://e-m-wilson.github.io/portfolio/">Back to Portfolio</a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
     </header>
+
+    <div class="main-menu">
+      <div class="hamburger">
+        <div></div><div></div><div></div>
+      </div>
+
+      <nav class="menu-group">
+        <a href="index.html" class="menu-item">All Movies</a>
+        <a href="allActors.html" class="menu-item">All Actors/Directors</a>
+        <a href="about.html" class="menu-item">About</a>
+        <a href="https://e-m-wilson.github.io/portfolio/" class="menu-item">Back to Portfolio</a>
+      </nav>
+    </div>
 
     <div class="wrapper">
       <h2> All Actors/Directors </h2>

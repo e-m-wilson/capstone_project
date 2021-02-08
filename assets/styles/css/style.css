@@ -6,49 +6,84 @@
 
 header {
   display: flex;
-  justify-content: space-around;
+  justify-content: flex-start;
   align-items: center;
 }
 
-header img {
+header a {
+  margin: 10px 40px;
+}
+
+header a img {
   width: 50px;
   height: 50px;
 }
 
-.menu-wrap .hamburger {
+.main-menu {
   position: fixed;
-  z-index: 1;
-  right: 15px;
+  top: 0px;
+  right: 0px;
+  background: blue;
+  height: 100px;
+  width: 100px;
+  border-bottom-left-radius: 50px;
+  transition: all 1s;
 }
 
-.menu-wrap .hamburger .bar {
-  height: 4px;
-  width: 30px;
-  background: black;
-  margin-bottom: 5px;
-}
-
-.menu-wrap .menu {
-  position: fixed;
+.main-menu.active {
+  height: 100vh;
   width: 100vw;
-  height: 200vh;
-  margin: auto;
-  background: grey;
+  border-bottom-left-radius: 0;
 }
 
-.menu-wrap .menu .menu-group {
+.main-menu.active .menu-group {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  list-style: none;
-  height: 100vh;
   padding: 25vh 0;
+  height: 100%;
+  width: 100%;
 }
 
-.menu-wrap .menu .menu-group .menu-item a {
-  text-decoration: none;
-  text-align: center;
+.main-menu .hamburger {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  height: 40px;
+  width: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  transition: all 0.4s;
+}
+
+.main-menu .hamburger.hamburger-anim > div:nth-child(1) {
+  transform: translateY(13px) rotate(45deg);
+}
+
+.main-menu .hamburger.hamburger-anim > div:nth-child(2) {
+  transform: translateX(1500px);
+}
+
+.main-menu .hamburger.hamburger-anim > div:nth-child(3) {
+  transform: translateY(-13px) rotate(-45deg);
+}
+
+.main-menu .hamburger div {
+  background: white;
+  width: 30px;
+  height: 4px;
+  transition: all 0.3s;
+}
+
+.main-menu .menu-group {
+  display: none;
+}
+
+.main-menu .menu-group a {
   color: white;
+  text-decoration: none;
   font-size: 2rem;
 }
