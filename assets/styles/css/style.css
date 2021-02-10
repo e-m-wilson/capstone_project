@@ -31,7 +31,7 @@ header h1 {
   height: 100px;
   width: 100px;
   border-bottom-left-radius: 50px;
-  transition: all 1s;
+  transition: all 0.3s;
 }
 
 .main-menu.active {
@@ -60,7 +60,6 @@ header h1 {
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-  transition: all 1s;
 }
 
 .main-menu .hamburger.hamburger-anim > div:nth-child(1) {
