@@ -1,6 +1,9 @@
 "use strict";
 
+//launches the fetch requests to build the page
 document.addEventListener("DOMContentLoaded", buildPage);
+
+//this section animates the hamburger menu
 var hamburger = document.querySelector('.hamburger');
 var menu = document.querySelector('.main-menu');
 var menuGroup = document.querySelector('.menu-group');
@@ -44,13 +47,13 @@ function buildPage () {
           .then(data => {
               ar_movies.push(data);
               if (data.poster_path != null && data.poster_path != "") {
-                  document.getElementById("allMoviesList").innerHTML +=
+                  document.getElementById("results").innerHTML +=
                   `<div class="resultBanner">${data.title}<a href=
                   "movieDetails.html?movieId=${data.id}" alt=
                   "${data.title}"><img src=
                   "https://image.tmdb.org/t/p/w500${data.poster_path}"></a></div>`;
               } else {
-                document.getElementById("allMoviesList").innerHTML +=
+                document.getElementById("results").innerHTML +=
                  `<div class="resultNoImage"><a href=
                  "movieDetails.html?movieId=${data.id}">${data.title}</a>No Image Found.</div>`;
               }

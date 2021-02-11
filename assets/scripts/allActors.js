@@ -1,6 +1,8 @@
 "use strict";
 
 document.addEventListener("DOMContentLoaded", buildPage);
+
+//this section animates the hamburger menu
 var hamburger = document.querySelector('.hamburger');
 var menu = document.querySelector('.main-menu');
 var menuGroup = document.querySelector('.menu-group');
@@ -43,19 +45,19 @@ function buildPage () {
           .then(data => {
               ar_actors.push(data);
               if (data.profile_path != null && data.profile_path != "") {
-                  document.getElementById("allActorsList").innerHTML +=
+                  document.getElementById("results").innerHTML +=
                   `<div class="resultBanner">${data.name}<a href=
                   "actorDetails.html?actorId=${data.id}" alt=
                   "${data.name}"><img src=
                   "https://image.tmdb.org/t/p/w500${data.profile_path}"></a></div>`;
               } else {
-                document.getElementById("allActorsList").innerHTML +=
+                document.getElementById("results").innerHTML +=
                  `<div class="resultNoImage"><a href=
                  "actorDetails.html?actorId=${data.id}">${data.name}</a></div>`;
               }
           })
         } else {
-            document.getElementById("allActorsList").innerHTML +=
+            document.getElementById("results").innerHTML +=
             `<div class="resultNoImage">${data.actors[i].name} is not in the TMDB database. Their name was still included because they were found in the Encyclopedia of Arkansas.</div>`;
         }
       }

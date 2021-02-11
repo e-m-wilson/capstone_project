@@ -1,6 +1,8 @@
 "use strict";
 
 document.addEventListener("DOMContentLoaded", buildPage);
+
+//this section animates the hamburger menu
 var hamburger = document.querySelector('.hamburger');
 var menu = document.querySelector('.main-menu');
 var menuGroup = document.querySelector('.menu-group');
