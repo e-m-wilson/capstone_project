@@ -2,6 +2,124 @@
 all actors/directors page. Imports are added below to scss files to style
 actor details and movie details pages. */
 @import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
+#movieDetails {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  margin: 5vh 0;
+}
+
+#movieDetails #movieTitle {
+  margin-bottom: 10vh;
+  text-align: center;
+}
+
+#movieDetails #movieBanner {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+#movieDetails #movieBanner img {
+  max-width: 100%;
+}
+
+#movieDetails #movieBanner #movieDate {
+  margin-bottom: 10vh;
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+#movieDetails #overview, #movieDetails #runtime {
+  margin-bottom: 10vh;
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+#castList {
+  list-style-type: none;
+  display: grid;
+  grid-template-columns: auto auto;
+  justify-content: center;
+  align-items: center;
+  grid-gap: 20px;
+  grid-auto-rows: minmax(250px auto);
+  margin-bottom: 30px;
+}
+
+#castList .castMember {
+  text-align: center;
+  padding: 10px;
+  font-size: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+#castList .castMember a {
+  text-decoration: none;
+  color: blue;
+}
+
+@media (min-width: 400px) {
+  #movieDetails #movieBanner img {
+    max-width: 70%;
+  }
+}
+
+@media (min-width: 600px) {
+  #movieDetails #movieBanner img {
+    max-width: 60%;
+  }
+}
+
+@media (min-width: 768px) {
+  #movieDetails {
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: center;
+    align-items: center;
+    grid-template-areas: 'title title' 'banner overview' 'runtime runtime';
+  }
+  #movieDetails #movieTitle {
+    grid-area: title;
+  }
+  #movieDetails #movieBanner {
+    grid-area: banner;
+  }
+  #movieDetails #movieBanner img {
+    max-width: 100%;
+  }
+  #movieDetails #movieBanner #movieDate {
+    margin: 0;
+  }
+  #movieDetails #overview {
+    grid-area: overview;
+    padding: 20px;
+    margin: 0;
+  }
+  #movieDetails #runtime {
+    grid-area: runtime;
+    margin: 10vh 0 0 0;
+  }
+}
+
+@media (min-width: 960px) {
+  #movieDetails #movieBanner img {
+    max-width: 60%;
+  }
+}
+
+@media (min-width: 1200px) {
+  #movieDetails #overview {
+    padding: 10vw;
+  }
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -104,10 +222,12 @@ header h1 {
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
+  padding: 10px;
 }
 
 .wrapper h2 {
   margin: 30px 0;
+  text-align: center;
 }
 
 .wrapper img {
@@ -117,7 +237,7 @@ header h1 {
 
 .wrapper #results {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: auto auto;
   grid-gap: 10px;
   grid-auto-rows: minmax(200px auto);
 }
@@ -128,20 +248,17 @@ header h1 {
   justify-content: center;
   align-items: center;
   text-align: center;
-  background: blue;
-  color: white;
   padding: 10px;
-  border-radius: 15px;
 }
 
 .wrapper #results .resultBanner a, .wrapper #results .resultNoImage a {
-  color: white;
+  color: blue;
   text-decoration: none;
 }
 
 @media (min-width: 540px) {
   .wrapper #results {
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: repeat(3, auto);
   }
 }
 
@@ -153,7 +270,7 @@ header h1 {
     max-width: 150px;
   }
   .wrapper #results {
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: repeat(4, auto);
   }
 }
 
