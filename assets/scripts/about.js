@@ -1,9 +1,9 @@
 "use strict";
 
 //this section animates the hamburger menu
-var hamburger = document.querySelector('.hamburger');
-var menu = document.querySelector('.main-menu');
-var menuGroup = document.querySelector('.menu-group');
+let hamburger = document.querySelector('.hamburger');
+let menu = document.querySelector('.main-menu');
+let menuGroup = document.querySelector('.menu-group');
 hamburger.addEventListener("click", hamburgerChecked);
 menu.addEventListener("transitionend", () => {
   if (menu.classList.contains('active')) {

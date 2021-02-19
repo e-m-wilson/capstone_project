@@ -3,9 +3,9 @@
 document.addEventListener("DOMContentLoaded", buildPage);
 
 //this section animates the hamburger menu
-var hamburger = document.querySelector('.hamburger');
-var menu = document.querySelector('.main-menu');
-var menuGroup = document.querySelector('.menu-group');
+let hamburger = document.querySelector('.hamburger');
+let menu = document.querySelector('.main-menu');
+let menuGroup = document.querySelector('.menu-group');
 hamburger.addEventListener("click", hamburgerChecked);
 menu.addEventListener("transitionend", () => {
   if (menu.classList.contains('active')) {
@@ -24,13 +24,13 @@ function hamburgerChecked () {
 function buildPage () {
   const api_key = "20ab01d1e4cf2615dc812916957806eb";
   const include_adult = "false";
-  var ar_actors = [];
-  var language = "en-US";
-  var page = "1";
-  var sort = "popularity.desc";
-  var include_video = "false";
-  var pageNumber = "1";
-  var i = 0;
+  let ar_actors = [];
+  let language = "en-US";
+  let page = "1";
+  let sort = "popularity.desc";
+  let include_video = "false";
+  let pageNumber = "1";
+  let i = 0;
   fetch('assets/json/arkansas.json')
     .then(r => {
       return r.json();

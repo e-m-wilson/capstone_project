@@ -3,9 +3,9 @@
 document.addEventListener("DOMContentLoaded", buildPage);
 
 //this section animates the hamburger menu
-var hamburger = document.querySelector('.hamburger');
-var menu = document.querySelector('.main-menu');
-var menuGroup = document.querySelector('.menu-group');
+let hamburger = document.querySelector('.hamburger');
+let menu = document.querySelector('.main-menu');
+let menuGroup = document.querySelector('.menu-group');
 hamburger.addEventListener("click", hamburgerChecked);
 menu.addEventListener("transitionend", () => {
   if (menu.classList.contains('active')) {
@@ -26,8 +26,8 @@ function buildPage () {
   const urlParams = new URLSearchParams(query);
   const id = urlParams.get("movieId");
   const api_key = "20ab01d1e4cf2615dc812916957806eb";
-  var movie;
-  var language = "en-US";
+  let movie;
+  let language = "en-US";
   
   fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${api_key}&language=${language}`)
     .then(r => {
@@ -44,7 +44,7 @@ function buildPage () {
 function buildMovieDetails(movie) {
   const months = ['January', 'February', 'March', 'April', 'May', 'June',
    'July', 'August', 'September', 'October', 'November', 'December'];
-  var newDate = "";
+  let newDate = "";
 
   if (movie.release_date != null && movie.release_date != "") {
     const year = movie.release_date.slice(0, 4);
@@ -83,9 +83,9 @@ function buildMovieDetails(movie) {
 
 //call api to get cast and post to document
 function buildCastDetails(movie, api_key) {
-  var creditsList;
+  let creditsList;
   const wrapper = document.querySelector('.wrapper');
-  var i = 0;
+  let i = 0;
   
   fetch(`https://api.themoviedb.org/3/movie/${movie.id}/credits?api_key=${api_key}`)
   .then(r => {

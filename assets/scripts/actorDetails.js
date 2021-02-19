@@ -3,9 +3,9 @@
 document.addEventListener("DOMContentLoaded", buildPage);
 
 //this section animates the hamburger menu
-var hamburger = document.querySelector('.hamburger');
-var menu = document.querySelector('.main-menu');
-var menuGroup = document.querySelector('.menu-group');
+let hamburger = document.querySelector('.hamburger');
+let menu = document.querySelector('.main-menu');
+let menuGroup = document.querySelector('.menu-group');
 hamburger.addEventListener("click", hamburgerChecked);
 menu.addEventListener("transitionend", () => {
   if (menu.classList.contains('active')) {
@@ -27,10 +27,10 @@ function buildPage() {
   const api_key = "20ab01d1e4cf2615dc812916957806eb";
   const months = ['January', 'February', 'March', 'April', 'May', 'June',
    'July', 'August', 'September', 'October', 'November', 'December'];
-  var actor;
-  var filmography;
-  var i = 0;
-  var language = "en-US";
+  let actor;
+  let filmography;
+  let i = 0;
+  let language = "en-US";
   fetch(`https://api.themoviedb.org/3/person/${id}?api_key=${api_key}&language=${language}`)
     .then(r => {
       return r.json();
