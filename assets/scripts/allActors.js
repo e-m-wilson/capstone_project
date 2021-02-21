@@ -1,6 +1,6 @@
 "use strict";
 
-document.addEventListener("DOMContentLoaded", buildPage);
+document.addEventListener("DOMContentLoaded", start);
 
 //this section animates the hamburger menu
 let hamburger = document.querySelector('.hamburger');
@@ -20,46 +20,68 @@ function hamburgerChecked () {
   hamburger.classList.toggle('hamburger-anim');
 }
 
-//use local maintained json to call api; make array of movie objects to build page
-function buildPage () {
+//retrieves local json, fetches actor data, builds page with data
+async function start () {
+  const arMovieActorData = await fetchArList();
+  const arPeopleApiData = await fetchArPeople(arMovieActorData);
+  buildPage(arPeopleApiData);
+}
+
+//fetches local json and returns
+async function fetchArList () {
+  const res = await fetch('assets/json/arkansas.json');
+  const arList = await res.json();
+  return arList;
+}
+
+//fetches each actor from api and returns in an array
+async function fetchArPeople (arList) {
+
   const api_key = "20ab01d1e4cf2615dc812916957806eb";
-  const include_adult = "false";
-  let ar_actors = [];
+  const arPeopleArr = [];
   let language = "en-US";
-  let page = "1";
-  let sort = "popularity.desc";
-  let include_video = "false";
-  let pageNumber = "1";
   let i = 0;
-  fetch('assets/json/arkansas.json')
-    .then(r => {
-      return r.json();
-    })
-    .then(data => {
-      for (i in data.actors) {
-        if (data.actors[i].id != "") {
-        fetch(`https://api.themoviedb.org/3/person/${data.actors[i].id}?api_key=${api_key}&language=${language}`)
-          .then(r => {
-            return r.json();
-          })
-          .then(data => {
-              ar_actors.push(data);
-              if (data.profile_path != null && data.profile_path != "") {
-                  document.getElementById("results").innerHTML +=
-                  `<div class="resultBanner">${data.name}<a href=
-                  "actorDetails.html?actorId=${data.id}" alt=
-                  "${data.name}"><img src=
-                  "https://image.tmdb.org/t/p/w500${data.profile_path}"></a></div>`;
-              } else {
-                document.getElementById("results").innerHTML +=
-                 `<div class="resultNoImage"><a href=
-                 "actorDetails.html?actorId=${data.id}">${data.name}</a></div>`;
-              }
-          })
-        } else {
-            document.getElementById("results").innerHTML +=
-            `<div class="resultNoImage">${data.actors[i].name} is not in the TMDB database. Their name was still included because they were found in the Encyclopedia of Arkansas.</div>`;
-        }
-      }
-    })
+
+  for (i in arList.actors) {
+    if (arList.actors[i].id != "") {
+    const actorData = await fetch(`https://api.themoviedb.org/3/person/${arList.actors[i].id}?api_key=${api_key}&language=${language}`);
+    const parsedActor = await actorData.json();
+    arPeopleArr.push(parsedActor);
+    } else {
+      document.getElementById("results").innerHTML +=
+      `<div class="resultNoImage">${arList.actors[i].name} is not in the TMDB database. Their name was still included because they were found in the Encyclopedia of Arkansas.</div>`;
+    }
+  }
+
+  return arPeopleArr;
+}
+
+
+//builds page from array of arkansas people
+function buildPage (arPeople) {
+
+  const results = document.querySelector('#results');
+  let i = 0;
+
+  for (i in arPeople) {
+    
+    const div = document.createElement('div');
+
+    if (arPeople[i].profile_path != null && arPeople[i].profile_path != "") {
+
+      div.classList.add('resultBanner');
+      div.innerHTML = `${arPeople[i].name}<a href=
+      "actorDetails.html?actorId=${arPeople[i].id}" alt=
+      "${arPeople[i].name}"><img src=
+      "https://image.tmdb.org/t/p/w500${arPeople[i].profile_path}"></a>`;
+
+    } else {
+
+      div.classList.add('resultNoImage');
+      div.innerHTML = `<a href=
+      "actorDetails.html?actorId=${arPeople[i].id}">${arPeople[i].name}</a>`;
+
+    }
+    results.appendChild(div);
+  }
 }
